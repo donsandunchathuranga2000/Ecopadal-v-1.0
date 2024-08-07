@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:text="Ecopadal"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi mate, Sign in Now"
+            android:layout_below="@id/tvTitle"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"/>
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/eco"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="110dp"
+            android:text="Phone Number"
+            android:textStyle="bold"
+            android:textSize="17dp"/>
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint=" Enter Phone Number"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp"
+            android:inputType="number"
+            android:id="@+id/phonenumber">
+
+        </EditText>
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#3072E4"
+            android:padding="10dp"
+            android:layout_marginTop="20dp">
+
+        </Button>
+        <TextView
+            android:id="@+id/tvOrContinueWith"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or Continue with"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+
+                android:layout_marginRight="20dp"
+                android:src="@drawable/gg"/>
+
+            <Button
+                android:id="@+id/signInButton"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:backgroundTint="#3072E4"
+                android:text="Sign up with Google"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

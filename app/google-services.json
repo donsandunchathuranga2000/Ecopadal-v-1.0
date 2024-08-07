@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "419537375304",
+    "project_id": "ecopadal",
+    "storage_bucket": "ecopadal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419537375304:android:d8bc90cbd86df34a0ac87d",
+        "android_client_info": {
+          "package_name": "com.example.ecopadal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419537375304-bkkubo5e8c8q8skuqcajrf7nm8lcn21k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ecopadal",
+            "certificate_hash": "85444feb95acdcaffb447d4e78d48fb30bb063d1"
+          }
+        },
+        {
+          "client_id": "419537375304-l1a1ir8n04qpf0bhcq6ufbocbcvhjtk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA90fcCujX6spsej6tOU7IRH_kIgWayErg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419537375304-l1a1ir8n04qpf0bhcq6ufbocbcvhjtk8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
