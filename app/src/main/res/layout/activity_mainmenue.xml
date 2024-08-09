@@ -38,14 +38,14 @@
         <EditText
             android:id="@+id/editCardName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:hint="Name on the card"
             android:layout_marginTop="8dp" />
 
         <EditText
             android:id="@+id/editCardNumber"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:hint="Card Number"
             android:inputType="number"
             android:layout_marginTop="8dp" />
@@ -59,7 +59,7 @@
             <EditText
                 android:id="@+id/editExpiryDate"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:hint="Expiry Date (MM/YY)"
                 android:inputType="date" />
@@ -67,7 +67,7 @@
             <EditText
                 android:id="@+id/editCvv"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:hint="CVV"
                 android:inputType="numberPassword"

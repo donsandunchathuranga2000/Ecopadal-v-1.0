@@ -1,99 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/bikeImage"
+    <fragment
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/map_fragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="@drawable/bike"
-        app:layout_constraintBottom_toTopOf="@id/orderButton"
-        app:layout_constraintDimensionRatio="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/bikeModel"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cruiser"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/bikeImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="30dp"
+        android:contentDescription="Get Current Location"
+        android:backgroundTint="#00BCD4"
+        app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
-    <TextView
-        android:id="@+id/bikePrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="€2,999"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/bikeModel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <Button
-        android:id="@+id/orderButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Order"
-        app:layout_constraintTop_toBottomOf="@id/bikePrice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
-
-    <GridLayout
-        android:id="@+id/controlPanel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2"
-        android:rowCount="3"
-        app:layout_constraintTop_toBottomOf="@id/orderButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Speed"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Battery"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Auto Lock"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Features"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"/>
-
-
-
-    </GridLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
