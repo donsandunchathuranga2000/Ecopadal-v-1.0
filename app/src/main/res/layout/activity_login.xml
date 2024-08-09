@@ -15,7 +15,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="0dp"
             android:text="Ecopadal"
             android:textSize="24sp" />
 
@@ -43,7 +42,7 @@
 
         <EditText
             android:layout_width="350dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="15dp"
             android:hint=" Enter Phone Number"
             android:textSize="20sp"

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,8 +17,17 @@
         android:theme="@style/Theme.Ecopadal"
         tools:targetApi="31">
         <activity
-            android:name=".payment"
+            android:name=".Mainmenue"
             android:exported="false" />
+         <!-- Using MAPS_API_KEY from local.properties -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDg5uX0d4dyBq9WuUj9rrZQ2sjXUMxqoTs" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps2" />
         <activity
             android:name=".Splash"
             android:exported="true">
