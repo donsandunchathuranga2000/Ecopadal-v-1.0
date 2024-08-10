@@ -2,9 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
 
     <application
         android:allowBackup="true"
@@ -17,9 +23,14 @@
         android:theme="@style/Theme.Ecopadal"
         tools:targetApi="31">
         <activity
-            android:name=".Mainmenue"
+            android:name=".Ridermenue"
             android:exported="false" />
-         <!-- Using MAPS_API_KEY from local.properties -->
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Mainmenue"
+            android:exported="false" /> <!-- Using MAPS_API_KEY from local.properties -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDg5uX0d4dyBq9WuUj9rrZQ2sjXUMxqoTs" />

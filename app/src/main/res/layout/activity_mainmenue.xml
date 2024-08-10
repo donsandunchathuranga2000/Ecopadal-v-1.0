@@ -1,92 +1,142 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:background="#F3F5F6">
 
+    <!-- Profile Picture and Greeting -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/linearLayoutProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Payment Method Section -->
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/log_inpic"
+            android:contentDescription="Profile Picture"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_vertical"/>
+
         <TextView
+            android:id="@+id/greetingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Payment Details"
-            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:text="Hi, name"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnPayWithCreditCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pay With Credit Card"
-            android:background="@drawable/button_background" />
-
-
-
-        <!-- Card Details Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Card Details"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
-
-        <EditText
-            android:id="@+id/editCardName"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Name on the card"
-            android:layout_marginTop="8dp" />
-
-        <EditText
-            android:id="@+id/editCardNumber"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Card Number"
-            android:inputType="number"
-            android:layout_marginTop="8dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/editExpiryDate"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:hint="Expiry Date (MM/YY)"
-                android:inputType="date" />
-
-            <EditText
-                android:id="@+id/editCvv"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:hint="CVV"
-                android:inputType="numberPassword"
-                android:layout_marginStart="8dp" />
-        </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/checkBoxSaveCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Store credit card for future payments"
-            android:layout_marginTop="16dp" />
-
-        <Button
-            android:id="@+id/btnSaveDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="pay now"
-            android:background="#000000"
-            android:layout_marginTop="16dp" />
     </LinearLayout>
-</ScrollView>
+
+
+    <ImageView
+        android:id="@+id/bicycleImage"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="Bicycle Image"
+        android:scaleType="centerInside"
+        android:src="@drawable/bike"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutProfile" />
+
+    <TextView
+        android:id="@+id/bicycleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cruiser"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/orderButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bicycleImage" />
+
+    <Button
+        android:id="@+id/orderButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@color/black"
+        android:text="Ride Now"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bicycleTitle" />
+
+    <GridLayout
+        android:id="@+id/bottomControls"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="50dp"
+        android:columnCount="2"
+        android:padding="0dp"
+        android:rowCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderButton">
+
+        <!-- Speed Button -->
+        <TextView
+            android:id="@+id/speedText"
+            android:layout_width="180dp"
+            android:layout_height="118dp"
+            android:layout_gravity="center"
+            android:text="Speed"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <!-- Auto Lock Button -->
+        <Button
+            android:id="@+id/autoLockButton"
+            android:layout_width="180dp"
+            android:layout_height="107dp"
+            android:layout_margin="8dp"
+            android:text="Auto Lock" />
+
+        <!-- Battery Button -->
+
+        <!-- Features Button -->
+        <Button
+            android:id="@+id/batteryButton"
+            android:layout_width="177dp"
+            android:layout_height="118dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_margin="8dp"
+            android:text="Battery" />
+
+        <Button
+            android:id="@+id/featuresButton"
+            android:layout_width="173dp"
+            android:layout_height="112dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_margin="8dp"
+            android:text="Features" />
+
+        <!-- Lock Button -->
+
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
