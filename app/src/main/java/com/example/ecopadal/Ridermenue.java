@@ -68,33 +68,20 @@ public class Ridermenue extends AppCompatActivity {
             }
 
             if (bluetoothSocket == null || !bluetoothSocket.isConnected()) {
-                connectToDevice(selectedDevice);
-            }
-
-            try {
-                if (outputStream != null) {
-                    if (isLocked) {
-                        outputStream.write('U'); // send 'U' to unlock
-                        lockUnlockButton.setText("Unlock");
-                        Toast.makeText(getApplicationContext(), "Unlocked", Toast.LENGTH_SHORT).show();
-                    } else {
-                        outputStream.write('L'); // send 'L' to lock
-                        lockUnlockButton.setText("Lock");
-                        Toast.makeText(getApplicationContext(), "Locked", Toast.LENGTH_SHORT).show();
-                    }
-                    isLocked = !isLocked;
-                } else {
-                    Toast.makeText(getApplicationContext(), "Output stream is null", Toast.LENGTH_SHORT).show();
-                }
-            } catch (IOException e) {
-                handleBluetoothError(e);
+                connectToDeviceInBackground(selectedDevice);
+            } else {
+                toggleLockUnlock();
             }
         });
     }
 
     private void checkBluetoothPermissions() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.BLUETOOTH_CONNECT}, 1);
+            ActivityCompat.requestPermissions(this, new String[]{
+                    android.Manifest.permission.BLUETOOTH_CONNECT,
+                    android.Manifest.permission.BLUETOOTH_SCAN,
+                    android.Manifest.permission.BLUETOOTH_ADMIN
+            }, 1);
         }
     }
 
@@ -122,7 +109,7 @@ public class Ridermenue extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             selectedDevice = pairedDevices.get(position);
             Toast.makeText(getApplicationContext(), "Selected device: " + selectedDevice.getName(), Toast.LENGTH_SHORT).show();
-            connectToDevice(selectedDevice);
+            connectToDeviceInBackground(selectedDevice);
         });
 
         builder.setView(dialogView);
@@ -130,20 +117,55 @@ public class Ridermenue extends AppCompatActivity {
         builder.show();
     }
 
-    private void connectToDevice(BluetoothDevice device) {
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.BLUETOOTH_CONNECT}, 1);
-            return;
-        }
+    private void connectToDeviceInBackground(BluetoothDevice device) {
+        new Thread(() -> {
+            try {
+                if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                Log.d(TAG, "Attempting to connect to " + device.getName() + " at " + device.getAddress());
+                bluetoothSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
+                bluetoothSocket.connect();
+                outputStream = bluetoothSocket.getOutputStream();
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Connected to " + device.getName(), Toast.LENGTH_SHORT).show();
+                    toggleLockUnlock(); // Trigger lock/unlock after connecting
+                });
+            } catch (IOException e) {
+                handleBluetoothError(e);
+            }
+        }).start();
+    }
 
-        try {
-            Log.d(TAG, "Attempting to connect to " + device.getName() + " at " + device.getAddress());
-            bluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(MY_UUID);
-            bluetoothSocket.connect();
-            outputStream = bluetoothSocket.getOutputStream();
-            Toast.makeText(this, "Connected to " + device.getName(), Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            handleBluetoothError(e);
+    private void toggleLockUnlock() {
+        if (outputStream != null) {
+            try {
+                if (isLocked) {
+                    outputStream.write('U'); // send 'U' to unlock
+                    runOnUiThread(() -> {
+                        lockUnlockButton.setText("Unlock");
+                        Toast.makeText(getApplicationContext(), "Unlocked", Toast.LENGTH_SHORT).show();
+                    });
+                } else {
+                    outputStream.write('L'); // send 'L' to lock
+                    runOnUiThread(() -> {
+                        lockUnlockButton.setText("Lock");
+                        Toast.makeText(getApplicationContext(), "Locked", Toast.LENGTH_SHORT).show();
+                    });
+                }
+                isLocked = !isLocked;
+            } catch (IOException e) {
+                handleBluetoothError(e);
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Output stream is null", Toast.LENGTH_SHORT).show();
         }
     }
 
